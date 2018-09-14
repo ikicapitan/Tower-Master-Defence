@@ -11,7 +11,12 @@ config_version=3
 [application]
 
 config/name="tower defense"
+run/main_scene="res://niveles/genMapa.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+gamehandler="*res://Scripts/gamehandler.gd"
 
 [input]
 

@@ -36,7 +36,7 @@ func _physics_process(delta):
 	elif Input.is_action_pressed(\"ui_down\"):
 		global_position.y += velCamara * delta"
 
-[node name="pos" type="Position2D" index="0"]
+[node name="pos" type="Position2D"]
 
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]

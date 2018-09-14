@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://tiles/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://niveles/pos.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/tiempo.gd" type="Script" id=3]
 
 [sub_resource type="GDScript" id=1]
 
@@ -37,6 +38,7 @@ var direccion = {
 }
 
 func _ready():
+	randomize()
 	generarMapa()
 	generarMuros()
 
@@ -124,5 +126,44 @@ script = SubResource( 1 )
 [node name="tilemap" parent="." index="0" instance=ExtResource( 1 )]
 
 [node name="pos" parent="." index="1" instance=ExtResource( 2 )]
+
+[node name="GUI" type="CanvasLayer" parent="." index="2"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Tiempo" type="Label" parent="GUI" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 422.0
+margin_top = 8.0
+margin_right = 462.0
+margin_bottom = 22.0
+rect_scale = Vector2( 5, 5 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="GUI" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[connection signal="timeout" from="GUI/Timer" to="GUI/Tiempo" method="_on_Timer_timeout"]
 
 
