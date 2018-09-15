@@ -17,6 +17,11 @@ config/icon="res://icon.png"
 [autoload]
 
 gamehandler="*res://Scripts/gamehandler.gd"
+Persistence="*res://Autoloads/Persistence.tscn"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "PersistenceNode" )
 
 [input]
 
