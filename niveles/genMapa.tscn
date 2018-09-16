@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://niveles/genMapa.gd" type="Script" id=1]
 [ext_resource path="res://tiles/tilemap.tscn" type="PackedScene" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://Fuentes/GUI_Res.tres" type="DynamicFont" id=10]
 [ext_resource path="res://GUI/gold_icon.png" type="Texture" id=11]
 [ext_resource path="res://GUI/food_icon.png" type="Texture" id=12]
-[ext_resource path="res://niveles/Cursor.tscn" type="PackedScene" id=13]
 
 [node name="genMapa" type="Node2D" index="0"]
 
@@ -22,6 +21,8 @@ _sections_unfolded = [ "Pause" ]
 [node name="tilemap" parent="." index="0" instance=ExtResource( 2 )]
 
 [node name="pos" parent="." index="1" instance=ExtResource( 3 )]
+
+editor/display_folded = true
 
 [node name="GUI" type="CanvasLayer" parent="." index="2"]
 
@@ -408,8 +409,7 @@ scale = Vector2( 1.79969, 1.61239 )
 texture = ExtResource( 12 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Cursor" parent="." index="3" instance=ExtResource( 13 )]
-
 [connection signal="timeout" from="GUI/Timer" to="GUI/Tiempo" method="_on_Timer_timeout"]
 
 
+[editable path="pos"]
