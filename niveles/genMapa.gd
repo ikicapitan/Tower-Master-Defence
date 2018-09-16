@@ -31,8 +31,12 @@ var direccion = {
 
 func _ready():
 	randomize()
+	
 	generarMapa()
 	generarMuros()
+	
+	# Cursor
+	$Cursor.set_tilemap($tilemap)
 
 func generarMapa():
 	for pasilloNo in range(cantidadPasillo):

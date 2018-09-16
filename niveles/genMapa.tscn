@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://niveles/genMapa.gd" type="Script" id=1]
 [ext_resource path="res://tiles/tilemap.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://GUI/boton_backpressed.png" type="Texture" id=7]
 [ext_resource path="res://GUI/gold_icon.png" type="Texture" id=8]
 [ext_resource path="res://GUI/food_icon.png" type="Texture" id=9]
+[ext_resource path="res://niveles/Cursor.tscn" type="PackedScene" id=10]
 
 [node name="genMapa" type="Node2D" index="0"]
 
@@ -402,6 +403,8 @@ position = Vector2( 836.607, 36.8558 )
 scale = Vector2( 1.79969, 1.61239 )
 texture = ExtResource( 9 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Cursor" parent="." index="3" instance=ExtResource( 10 )]
 
 [connection signal="timeout" from="GUI/Timer" to="GUI/Tiempo" method="_on_Timer_timeout"]
 

@@ -19,6 +19,11 @@ config/icon="res://icon.png"
 gamehandler="*res://Scripts/gamehandler.gd"
 Persistence="*res://Autoloads/Persistence.tscn"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "PersistenceNode" )
@@ -44,4 +49,5 @@ ui_down=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
