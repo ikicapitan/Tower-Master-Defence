@@ -1,44 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://tiles/2.png" type="Texture" id=1]
-
-[sub_resource type="GDScript" id=1]
-
-script/source = "extends Position2D
-
-var marginTop = -10000
-var marginBottom = 10000
-var marginLeft = -10000
-var marginRight = 10000
-var pos = Vector2()
-onready var velCamara = get_parent().velCamara
-
-func _input(event):
-	if Input.is_action_just_pressed(\"ui_accept\"): #Enter
-		get_tree().reload_current_scene()
-
-func _physics_process(delta):
-	pos = global_position
-	if pos.x > marginRight:
-		global_position.x = marginRight
-	elif pos.x < marginLeft:
-		global_position.x = marginLeft
-	if pos.y > marginBottom:
-		global_position.y = marginBottom
-	elif pos.y < marginTop:
-		global_position.y = marginTop
-	if Input.is_action_pressed(\"ui_right\"):
-		global_position.x += velCamara * delta
-	elif Input.is_action_pressed(\"ui_left\"):
-		global_position.x -= velCamara * delta
-	if Input.is_action_pressed(\"ui_up\"):
-		global_position.y -= velCamara * delta
-	elif Input.is_action_pressed(\"ui_down\"):
-		global_position.y += velCamara * delta"
+[ext_resource path="res://niveles/pos.gd" type="Script" id=1]
+[ext_resource path="res://tiles/2.png" type="Texture" id=2]
 
 [node name="pos" type="Position2D"]
 
-script = SubResource( 1 )
+script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
@@ -69,6 +36,6 @@ _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Offset", "Smoothing" ]
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 
