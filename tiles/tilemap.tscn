@@ -2,7 +2,7 @@
 
 [ext_resource path="res://tiles/tilemap.res" type="TileSet" id=1]
 
-[node name="tilemap" type="TileMap" index="0"]
+[node name="tilemap" type="TileMap"]
 
 mode = 0
 tile_set = ExtResource( 1 )

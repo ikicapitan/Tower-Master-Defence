@@ -22,7 +22,6 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="GUI" type="CanvasLayer" parent="." index="2"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
