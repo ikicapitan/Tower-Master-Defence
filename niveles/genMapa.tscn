@@ -1,14 +1,17 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://niveles/genMapa.gd" type="Script" id=1]
 [ext_resource path="res://tiles/tilemap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://niveles/pos.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/tiempo.gd" type="Script" id=4]
-[ext_resource path="res://GUI/panel_back.png" type="Texture" id=5]
-[ext_resource path="res://GUI/boton_back.png" type="Texture" id=6]
-[ext_resource path="res://GUI/boton_backpressed.png" type="Texture" id=7]
-[ext_resource path="res://GUI/gold_icon.png" type="Texture" id=8]
-[ext_resource path="res://GUI/food_icon.png" type="Texture" id=9]
+[ext_resource path="res://Fuentes/GUI_Tiempo.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scripts/tiempo.gd" type="Script" id=5]
+[ext_resource path="res://Fuentes/GUI_Fase.tres" type="DynamicFont" id=6]
+[ext_resource path="res://GUI/panel_back.png" type="Texture" id=7]
+[ext_resource path="res://GUI/boton_back.png" type="Texture" id=8]
+[ext_resource path="res://GUI/boton_backpressed.png" type="Texture" id=9]
+[ext_resource path="res://Fuentes/GUI_Res.tres" type="DynamicFont" id=10]
+[ext_resource path="res://GUI/gold_icon.png" type="Texture" id=11]
+[ext_resource path="res://GUI/food_icon.png" type="Texture" id=12]
 
 [node name="genMapa" type="Node2D" index="0"]
 
@@ -21,7 +24,6 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="GUI" type="CanvasLayer" parent="." index="2"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -38,19 +40,20 @@ margin_left = 448.0
 margin_top = 14.0
 margin_right = 488.0
 margin_bottom = 28.0
-rect_scale = Vector2( 3.5, 3.5 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.636719, 0, 0, 1 )
+text = "12:34"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Rect" ]
+script = ExtResource( 5 )
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="Fase" type="Label" parent="GUI" index="1" groups=[
 "fase",
@@ -64,19 +67,19 @@ margin_left = 88.0
 margin_top = 25.0
 margin_right = 216.0
 margin_bottom = 39.0
-rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.330963, 0.941406, 0.86987, 1 )
 text = "Fase: PREPARACION"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_colors" ]
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
 
 [node name="Timer" type="Timer" parent="GUI" index="2"]
 
@@ -107,7 +110,7 @@ size_flags_vertical = 1
 
 position = Vector2( 89.2863, 223.674 )
 scale = Vector2( 1.97027, 4.28455 )
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 
 [node name="btn_1" type="TextureButton" parent="GUI/Menu" index="1"]
 
@@ -131,8 +134,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="btn_2" type="TextureButton" parent="GUI/Menu" index="2"]
@@ -157,8 +160,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="btn_3" type="TextureButton" parent="GUI/Menu" index="3"]
@@ -183,8 +186,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="btn_4" type="TextureButton" parent="GUI/Menu" index="4"]
@@ -209,8 +212,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="btn_5" type="TextureButton" parent="GUI/Menu" index="5"]
@@ -235,8 +238,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="btn_6" type="TextureButton" parent="GUI/Menu" index="6"]
@@ -261,8 +264,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="btn_7" type="TextureButton" parent="GUI/Menu" index="7"]
@@ -287,8 +290,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="btn_8" type="TextureButton" parent="GUI/Menu" index="8"]
@@ -313,8 +316,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="Resources" type="Container" parent="GUI" index="4"]
@@ -337,7 +340,7 @@ size_flags_vertical = 1
 position = Vector2( 513.041, 36.8909 )
 scale = Vector2( 10.4984, 0.75064 )
 z_index = -1
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="res1_txt" type="Label" parent="GUI/Resources" index="1" groups=[
@@ -352,24 +355,24 @@ margin_left = 724.79
 margin_top = 27.5652
 margin_right = 764.79
 margin_bottom = 41.5652
-rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 10 )
 text = "100"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="res1" type="Sprite" parent="GUI/Resources" index="2"]
 
 position = Vector2( 684.981, 37.4697 )
 scale = Vector2( 1.53112, 1.65075 )
-texture = ExtResource( 8 )
+texture = ExtResource( 11 )
 
 [node name="res2_txt" type="Label" parent="GUI/Resources" index="3" groups=[
 "res2",
@@ -383,24 +386,24 @@ margin_left = 876.2
 margin_top = 27.1815
 margin_right = 916.2
 margin_bottom = 41.1815
-rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 10 )
 text = "100"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="res2" type="Sprite" parent="GUI/Resources" index="4"]
 
 position = Vector2( 836.607, 36.8558 )
 scale = Vector2( 1.79969, 1.61239 )
-texture = ExtResource( 9 )
+texture = ExtResource( 12 )
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="GUI/Timer" to="GUI/Tiempo" method="_on_Timer_timeout"]
