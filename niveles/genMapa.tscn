@@ -42,6 +42,7 @@ script = ExtResource( 4 )
 
 [node name="GUI" type="CanvasLayer" parent="." index="3"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -50,6 +51,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="margenPantalla" type="Container" parent="GUI" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -63,6 +65,7 @@ size_flags_vertical = 1
 
 [node name="menuLateral" type="TextureRect" parent="GUI/margenPantalla" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.5
 anchor_right = 0.0
@@ -84,6 +87,7 @@ _sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="contenedor" type="VBoxContainer" parent="GUI/margenPantalla/menuLateral" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -133,6 +137,7 @@ _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_col
 
 [node name="margenBotones" type="MarginContainer" parent="GUI/margenPantalla/menuLateral/contenedor" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -444,6 +449,7 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="menuTop" type="TextureRect" parent="GUI/margenPantalla" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -462,6 +468,7 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="contenedor" type="HBoxContainer" parent="GUI/margenPantalla/menuTop" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
@@ -541,6 +548,7 @@ _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_font
 
 [node name="recursos" type="HBoxContainer" parent="GUI/margenPantalla/menuTop/contenedor" index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

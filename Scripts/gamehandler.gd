@@ -3,9 +3,9 @@ extends Node #Clase maestra del juego (madrE)
 enum estados {fase_1, fase_2, fase_3} #Fase 1: Preparacion #Fase 2: Batalla #Fase 3: Puntajes
 var e_actual = fase_1 #Fase actual del juego
 var t_fase1 = 60 #Preparacion dura 60 segundos
-var t_fase2 = 60*3 #Batalla dura 3 minutos
+var t_fase2 = t_fase1*3 #Batalla dura 3 minutos
 var t_fase3 = 10 #Puntajes dura 10 segundos
-var tiempo = 60 #Tiempo restante de la fase actual
+var tiempo = t_fase1 #Tiempo restante de la fase actual
 
 var oro = 100
 var alimento = 100
