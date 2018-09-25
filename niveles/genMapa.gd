@@ -1,7 +1,7 @@
 extends Node2D
 
 #Modificar bajo tu propio riesgo!
-#Hecho por Deybis A. Melendez (Damv)
+#Hecho por Deybis A. Melendez (Damv) - Iki Capitan
 
 #Variables modificables...
 var direccionRandom = Vector2(0,1) #Indicamos que la direccion inicial es hacia abajo
@@ -29,8 +29,17 @@ var direccion = {
 	izquierda = Vector2(-1,0)
 }
 
+#Variables extra
+
+var tilemap #Nodo tilemap
+var enemigos #Nodo enemigos
+var pos #Nodo pos
+
 func _ready():
-	$enemigos.spawnPos = origenCamino
+	tilemap = get_tree().get_nodes_in_group("tilemap")[0] #Busco una sola vez el tilemap para multiples usos
+	enemigos = get_tree().get_nodes_in_group("enemigos")[0] #Idem Anterior
+	pos = get_tree().get_nodes_in_group("pos")[0] #Idem Anterior
+	enemigos.spawnPos = origenCamino
 	randomize() # gracias Iki
 	generarMapa() #generamos los pasillos
 	generarMuros() #generamos el terreno al rededor del pasillo
@@ -42,7 +51,7 @@ func generarMapa():
 		for pasillo in range(distanciaPasillo):
 			#Escaneamos el terreno para saber si no hay camino donde se colocara el terreno.
 			if !escanTerreno(): #si no hay terreno, generamos terreno
-				$tilemap.set_cell(origenCamino.x,origenCamino.y,1)
+				tilemap.set_cell(origenCamino.x,origenCamino.y,1)
 				origenCamino += direccionRandom #nos posicionamos en el siguiente tile
 		
 		#revisamos si la posicion del tile es la mas lejos en los ejes x,-x,y,-y
@@ -77,6 +86,9 @@ func generarMapa():
 				else: dirActual = direccion.abajo
 		
 		direccionRandom = dirActual 
+		
+	enemigos.goalPos = origenCamino * tilemap.cell_size#Posicion a alcanzar por enemigos (objetivo)
+	
 
 func escanTerreno():
 	var terreno = false
@@ -93,7 +105,7 @@ func escanTerreno():
 	puntoEscan = origenCamino + (direccionRandom * (distanciaEntrePasillos + 1))
 	for i in range(9): # escan
 		#si hay terreno en la posicion escaneada... el id del terreno en el TileMap es 1
-		if $tilemap.get_cell(puntoEscan.x + x , puntoEscan.y + y) == 1: terreno = true
+		if tilemap.get_cell(puntoEscan.x + x , puntoEscan.y + y) == 1: terreno = true
 		if x >= 1:
 			x = -1
 			y += 1
@@ -109,15 +121,15 @@ func generarMuros():
 	x2 = esqIzqMapa.x - round(camaraMargen.x/2)
 	y2 = esqIzqMapa.y - round(camaraMargen.y/2)
 	#le indicamos a pos el margen de la camara
-	$pos.marginBottom = esqDerMapa.y * 64 #se multiplica por el tamaño del tile
-	$pos.marginTop = esqIzqMapa.y * 64
-	$pos.marginLeft = esqIzqMapa.x * 64
-	$pos.marginRight = esqDerMapa.x * 64
+	pos.marginBottom = esqDerMapa.y * 64 #se multiplica por el tamaño del tile
+	pos.marginTop = esqIzqMapa.y * 64
+	pos.marginLeft = esqIzqMapa.x * 64
+	pos.marginRight = esqDerMapa.x * 64
 
-	$pos.global_position = Vector2(round(x),round(y)) #ubicamos la camara al inicio del mapa
+	pos.global_position = Vector2(round(x),round(y)) #ubicamos la camara al inicio del mapa
 	
 	for i in range(x*y):
-		if $tilemap.get_cell(x2,y2) != 1: $tilemap.set_cell(x2,y2,0) #si no hay terreno (1) coloca muro (0)
+		if tilemap.get_cell(x2,y2) != 1: tilemap.set_cell(x2,y2,0) #si no hay terreno (1) coloca muro (0)
 		if x2 > esqDerMapa.x + round(camaraMargen.x/2): #si x2 supera el limite del mapa vuelve al principio
 			x2 = esqIzqMapa.x - round(camaraMargen.x/2)
 			y2 +=1 # el siguiente ciclo comenzara en la fila de abajo

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://tiles/1.png" type="Texture" id=1]
 [ext_resource path="res://tiles/2.png" type="Texture" id=2]
@@ -9,21 +9,64 @@
 [ext_resource path="res://tiles/7.png" type="Texture" id=7]
 [ext_resource path="res://tiles/8.png" type="Texture" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="tilemap" type="Node2D"]
+[sub_resource type="NavigationPolygon" id=4]
+
+vertices = PoolVector2Array( 32, -32, 32, 32, -32, 32, -32, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 ) ]
+
+[sub_resource type="NavigationPolygon" id=5]
+
+vertices = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 0 ) ]
+outlines = [ PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32, -32, -32 ) ]
+
+[sub_resource type="NavigationPolygon" id=6]
+
+vertices = PoolVector2Array( 32, -32, 32, 32, -32, 32, -32, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 ) ]
+
+[sub_resource type="NavigationPolygon" id=7]
+
+vertices = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 0 ) ]
+outlines = [ PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32, -32, -32 ) ]
+
+[sub_resource type="NavigationPolygon" id=8]
+
+vertices = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 0 ) ]
+outlines = [ PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32, -32, -32 ) ]
+
+[sub_resource type="NavigationPolygon" id=9]
+
+vertices = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 0 ) ]
+outlines = [ PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32, -32, -32 ) ]
+
+[sub_resource type="NavigationPolygon" id=10]
+
+vertices = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 0 ) ]
+outlines = [ PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32, -32, -32 ) ]
+
+[node name="tilemap" type="Node2D" index="0"]
 
 [node name="terreno" type="Sprite" parent="." index="0"]
 
+editor/display_folded = true
 texture = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="terreno" index="0"]
 
-position = Vector2( 128, 0 )
+editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -31,50 +74,93 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="terreno/StaticBody2D" index="0"]
 
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="caminoEsquina" type="Sprite" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( 64, 0 )
 texture = ExtResource( 2 )
 
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="caminoEsquina" index="0"]
+
+navpoly = SubResource( 4 )
+enabled = true
+
 [node name="camino2" type="Sprite" parent="." index="2"]
 
+editor/display_folded = true
 position = Vector2( 128, 0 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="camino2" index="0"]
+
+navpoly = SubResource( 5 )
+enabled = true
+
 [node name="camino3" type="Sprite" parent="." index="3"]
 
+editor/display_folded = true
 position = Vector2( 192, 0 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="NavigationPolygonInstance3" type="NavigationPolygonInstance" parent="camino3" index="0"]
+
+navpoly = SubResource( 6 )
+enabled = true
+
 [node name="camino4" type="Sprite" parent="." index="4"]
 
+editor/display_folded = true
 position = Vector2( 256, 0 )
 texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="NavigationPolygonInstance3" type="NavigationPolygonInstance" parent="camino4" index="0"]
+
+navpoly = SubResource( 7 )
+enabled = true
+
 [node name="camino5" type="Sprite" parent="." index="5"]
 
+editor/display_folded = true
 position = Vector2( 320, 0 )
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="NavigationPolygonInstance4" type="NavigationPolygonInstance" parent="camino5" index="0"]
+
+navpoly = SubResource( 8 )
+enabled = true
+
 [node name="camino" type="Sprite" parent="." index="6"]
 
+editor/display_folded = true
 position = Vector2( 384, 0 )
 texture = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="NavigationPolygonInstance4" type="NavigationPolygonInstance" parent="camino" index="0"]
+
+navpoly = SubResource( 9 )
+enabled = true
+
 [node name="camino6" type="Sprite" parent="." index="7"]
 
+editor/display_folded = true
 position = Vector2( 448, 0 )
 texture = ExtResource( 8 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="NavigationPolygonInstance5" type="NavigationPolygonInstance" parent="camino6" index="0"]
+
+navpoly = SubResource( 10 )
+enabled = true
 
 

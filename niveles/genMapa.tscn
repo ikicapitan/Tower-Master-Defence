@@ -1,27 +1,38 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://niveles/genMapa.gd" type="Script" id=1]
 [ext_resource path="res://tiles/tilemap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://niveles/pos.tscn" type="PackedScene" id=3]
 [ext_resource path="res://niveles/enemigos.gd" type="Script" id=4]
-[ext_resource path="res://GUI/panel_back.png" type="Texture" id=5]
-[ext_resource path="res://Fuentes/GUI_Fase.tres" type="DynamicFont" id=6]
-[ext_resource path="res://GUI/boton_back.png" type="Texture" id=7]
-[ext_resource path="res://GUI/boton_backpressed.png" type="Texture" id=8]
-[ext_resource path="res://Fuentes/GUI_Tiempo.tres" type="DynamicFont" id=9]
-[ext_resource path="res://Scripts/tiempo.gd" type="Script" id=10]
-[ext_resource path="res://GUI/gold_icon.png" type="Texture" id=11]
-[ext_resource path="res://Fuentes/GUI_Res.tres" type="DynamicFont" id=12]
-[ext_resource path="res://GUI/food_icon.png" type="Texture" id=13]
+[ext_resource path="res://Unidades/Unit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/panel_back.png" type="Texture" id=6]
+[ext_resource path="res://Fuentes/GUI_Fase.tres" type="DynamicFont" id=7]
+[ext_resource path="res://GUI/boton_back.png" type="Texture" id=8]
+[ext_resource path="res://GUI/boton_backpressed.png" type="Texture" id=9]
+[ext_resource path="res://Fuentes/GUI_Tiempo.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Scripts/tiempo.gd" type="Script" id=11]
+[ext_resource path="res://GUI/gold_icon.png" type="Texture" id=12]
+[ext_resource path="res://Fuentes/GUI_Res.tres" type="DynamicFont" id=13]
+[ext_resource path="res://GUI/food_icon.png" type="Texture" id=14]
 
-[node name="genMapa" type="Node2D" index="0"]
+[node name="genMapa" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="tilemap" parent="." index="0" instance=ExtResource( 2 )]
+[node name="nav" type="Navigation2D" parent="." index="0" groups=[
+"nav",
+]]
 
-[node name="pos" parent="." index="1" instance=ExtResource( 3 )]
+[node name="tilemap" parent="nav" index="0" groups=[
+"tilemap",
+] instance=ExtResource( 2 )]
+
+_sections_unfolded = [ "Cell" ]
+
+[node name="pos" parent="." index="1" groups=[
+"pos",
+] instance=ExtResource( 3 )]
 
 editor/display_folded = true
 
@@ -36,9 +47,19 @@ drag_margin_bottom = 0.0
 
 visible = false
 
-[node name="enemigos" type="Node2D" parent="." index="2"]
+[node name="enemigos" type="Node2D" parent="." index="2" groups=[
+"enemigos",
+]]
 
 script = ExtResource( 4 )
+enemy1 = ExtResource( 5 )
+
+[node name="tmr_enemys" type="Timer" parent="enemigos" index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = true
 
 [node name="GUI" type="CanvasLayer" parent="." index="3"]
 
@@ -80,7 +101,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Rect", "Size Flags" ]
@@ -121,7 +142,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.329412, 0.941176, 0.866667, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
@@ -194,8 +215,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Rect" ]
@@ -221,8 +242,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Rect" ]
@@ -248,8 +269,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Rect" ]
@@ -276,8 +297,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Rect" ]
@@ -303,8 +324,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Rect" ]
@@ -331,8 +352,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Rect" ]
@@ -358,8 +379,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Rect" ]
@@ -386,8 +407,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Rect" ]
@@ -413,8 +434,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Rect" ]
@@ -441,8 +462,8 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 stretch_mode = 3
 _sections_unfolded = [ "Rect" ]
@@ -461,7 +482,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Rect" ]
@@ -504,7 +525,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.330963, 0.941406, 0.86987, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
@@ -532,7 +553,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 1, 1, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
@@ -543,7 +564,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 _sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="recursos" type="HBoxContainer" parent="GUI/margenPantalla/menuTop/contenedor" index="2"]
@@ -582,7 +603,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 expand = true
 stretch_mode = 4
 _sections_unfolded = [ "Rect" ]
@@ -605,7 +626,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 12 )
+custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 1
@@ -633,7 +654,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 expand = true
 stretch_mode = 4
 _sections_unfolded = [ "Rect" ]
@@ -656,7 +677,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 12 )
+custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 1
@@ -674,6 +695,8 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
+
+[connection signal="timeout" from="enemigos/tmr_enemys" to="enemigos" method="_on_tmr_enemys_timeout"]
 
 [connection signal="timeout" from="GUI/Timer" to="GUI/margenPantalla/menuTop/contenedor/Tiempo" method="_on_Timer_timeout"]
 
