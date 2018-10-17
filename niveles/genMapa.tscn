@@ -34,8 +34,6 @@ _sections_unfolded = [ "Cell" ]
 "pos",
 ] instance=ExtResource( 3 )]
 
-editor/display_folded = true
-
 [node name="Camera2D" parent="pos" index="0"]
 
 drag_margin_left = 0.0
@@ -51,6 +49,7 @@ visible = false
 "enemigos",
 ]]
 
+editor/display_folded = true
 script = ExtResource( 4 )
 enemy1 = ExtResource( 5 )
 
